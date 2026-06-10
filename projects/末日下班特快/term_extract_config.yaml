@@ -1,0 +1,53 @@
+# Term Extractor 配置文件
+# 路径支持相对路径（相对于本配置文件所在目录）和绝对路径
+
+big_table:
+  sources:
+    - path: "data/【工程】card_translations-1.xlsx"
+      key_col: "Key"
+      zh_col: "中文"
+      en_col: "English"
+    - path: "data/【工程】card_translations-2.xlsx"
+      zh_col: 1
+      en_col: 2
+      header: false
+    - path: "data/【工程】scripts_translations.xlsx"
+      key_col: "Key"
+      zh_col: "Chinese"
+      en_col: "English"
+    - path: "data/【工程】ui_translations.xlsx"
+      key_col: "Key"
+      zh_col: "中文"
+      en_col: "English"
+
+target:
+  path: "data/末日下班特快-内部工作表-ZH-EN.xlsx"
+  zh_col: "ZH"
+  en_col: "EN"
+  note_col: "Note"
+  source_col: "原文"
+  file_col: "File"
+
+matching:
+  max_contexts: 15
+  zero_match: "skip"
+
+special_rules:
+  - when: "note == '挂饰名'"
+    action: "copy_from_suffix"
+    suffix: "挂饰"
+
+ai:
+  api_key: "${DEEPSEEK_API_KEY}"
+  base_url: "https://api.deepseek.com/v1"
+  model: "deepseek-v4-pro"
+  concurrency: 3
+  retries: 3
+  max_alt: 3
+  progress_file: "runtime/term_extraction_progress.json"
+  log_file: "runtime/ai_raw_log.jsonl"
+
+output:
+  path: "output/末日下班特快-内部工作表-ZH-EN_filled.xlsx"
+  rename_cols:
+    原文: "Source"

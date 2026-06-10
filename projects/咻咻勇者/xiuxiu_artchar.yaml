@@ -1,0 +1,32 @@
+big_table:
+  sources:
+    - path: "data/xiuxiu_artchar_ref.xlsx"
+      zh_col: "简体"
+      en_col: "EN"
+
+target:
+  path: "data/xiuxiu_artchar_target.xlsx"
+  zh_col: "ZH"
+  en_col: "EN"
+  note_col: "Note"
+  source_col: "原文参考"
+  file_col: "File"
+
+matching:
+  max_contexts: 15
+  zero_match: "skip"
+
+ai:
+  api_key: "${DEEPSEEK_API_KEY}"
+  base_url: "https://api.deepseek.com/v1"
+  model: "deepseek-v4-pro"
+  concurrency: 3
+  retries: 3
+  max_alt: 3
+  progress_file: "runtime/xiuxiu_artchar_progress.json"
+  log_file: "runtime/xiuxiu_artchar_ai_log.jsonl"
+
+output:
+  path: "output/咻咻勇者_美术字术语_filled.xlsx"
+  rename_cols:
+    Source: "原文参考"

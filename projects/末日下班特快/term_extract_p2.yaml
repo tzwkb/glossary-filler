@@ -1,0 +1,48 @@
+big_table:
+  sources:
+    - path: "data/【工程】card_translations-1.xlsx"
+      key_col: "Key"
+      zh_col: "中文"
+      en_col: "English"
+    - path: "data/【工程】card_translations-2.xlsx"
+      zh_col: 1
+      en_col: 2
+      header: false
+    - path: "data/【工程】scripts_translations.xlsx"
+      key_col: "Key"
+      zh_col: "Chinese"
+      en_col: "English"
+    - path: "data/【工程】ui_translations.xlsx"
+      key_col: "Key"
+      zh_col: "中文"
+      en_col: "English"
+    - path: "data/0508_sheet1_clean.xlsx"
+      key_col: "ukey"
+      zh_col: "text_zh"
+      en_col: "text_en"
+    - path: "data/0508_sheet2_clean.xlsx"
+      key_col: "ukey"
+      zh_col: "text_zh"
+      en_col: "text_en"
+
+target:
+  path: "data/合并台本P2需要补充的术语(1).xlsx"
+  zh_col: "铁骨朵"
+  en_col: "EN"
+
+matching:
+  max_contexts: 15
+  zero_match: "skip"
+
+ai:
+  api_key: "${DEEPSEEK_API_KEY}"
+  base_url: "https://api.deepseek.com/v1"
+  model: "deepseek-v4-flash"
+  concurrency: 3
+  retries: 3
+  max_alt: 3
+  progress_file: "runtime/p2_terms_progress.json"
+  log_file: "runtime/p2_ai_raw_log.jsonl"
+
+output:
+  path: "output/合并台本P2_术语补充_AI.xlsx"

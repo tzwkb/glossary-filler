@@ -1,7 +1,9 @@
-# glossary-filler — 术语表补全工作台
+# Glossary Filler
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 
 English | [中文](README_ZH.md)
-
 
 ## Overview
 

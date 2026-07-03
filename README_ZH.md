@@ -1,7 +1,9 @@
-# glossary-filler — 术语表补全工作台
+# Glossary Filler 术语表补全工作台
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 
 [English](README.md) | 中文
-
 
 为游戏本地化术语表批量补英文译法：从双语 Excel 工程表（大表）中找每条中文术语的译法——精确匹配直填，包含匹配交 AI 从上下文提取，零匹配留空等下一批参考。核心引擎（`extractor.py` + `cli.py`）+ 各游戏项目工作区。
 

@@ -1,5 +1,44 @@
 # glossary-filler — 术语表补全工作台
 
+<!-- bilingual-readme:start -->
+
+## 双语说明 / Bilingual Documentation
+
+> 本节提供整篇 README 的中英双语维护说明；下方保留原始详细说明、命令、路径和配置示例。
+> This section provides bilingual maintenance notes for the full README; the original detailed notes, commands, paths, and configuration examples are preserved below.
+
+### 中文
+
+**概览**：术语表英文补全工作台，从双语 Excel 工程表中为中文术语批量寻找或提取英文译法。
+
+**主要能力**：
+- 精确匹配可直接填充。
+- 包含匹配交由 AI 从上下文提取。
+- 零匹配项保留给下一批参考处理。
+
+**使用方式**：按项目工作区准备双语大表、术语表和配置后运行 CLI/核心引擎。
+
+**状态**：该仓库仍按当前 README 的说明维护或使用。
+
+**注意事项**：不同游戏项目可在各自工作区维护独立资料。
+
+### English
+
+**Overview**: Glossary English-filling workstation that finds or extracts English renderings for Chinese terms from bilingual Excel project sheets.
+
+**Key capabilities**:
+- Exact matches can be filled directly.
+- Contained matches are sent to AI for context-based extraction.
+- No-match terms are kept for later reference batches.
+
+**Usage**: Prepare bilingual source sheets, glossaries, and configuration in the project workspace, then run the CLI/core engine.
+
+**Status**: This repository is maintained or used according to the current README notes.
+
+**Notes**: Different game projects can maintain separate resources in their own workspaces.
+
+<!-- bilingual-readme:end -->
+
 为游戏本地化术语表批量补英文译法：从双语 Excel 工程表（大表）中找每条中文术语的译法——精确匹配直填，包含匹配交 AI 从上下文提取，零匹配留空等下一批参考。核心引擎（`extractor.py` + `cli.py`）+ 各游戏项目工作区。
 
 ## 原理

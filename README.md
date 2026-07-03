@@ -1,6 +1,6 @@
 # glossary-filler — 术语表补全工作台
 
-[中文](README_ZH.md) | English
+English | [中文](README_ZH.md)
 
 
 ## Overview
@@ -27,33 +27,33 @@
 
 ## Command and Configuration Reference
 
-The following code blocks are preserved from the primary README. Commands, paths, and configuration keys are not translated; adjust them for the actual environment.
+The following code blocks keep commands, paths, filenames, and configuration keys literal; explanatory comments are translated for the English README.
 
 ```
-target 每条空 EN 术语
-├─ 大表唯一精确匹配且有 EN ──→ 直接填（不计费）
-├─ 出现在大表原文里（包含） ──→ AI 读 ≤15 条 原文/译文 上下文，提 best + Alt_EN_1~3
-│                                （备选严格限于上下文出现过的译法，编造会被过滤；拿不准返回 UNKNOWN 留空）
-└─ 零匹配 ────────────────────→ 留空
+target rows with blank EN terms
+├─ unique exact match in the big table with EN ──→ fill directly (no AI cost)
+├─ appears in big-table source text (contains match) ──→ AI reads up to 15 source/target context rows and extracts best + Alt_EN_1~3
+│                                (alternatives must come from observed context; hallucinations are filtered; return UNKNOWN if uncertain)
+└─ no match ───────────────────→ leave blank
 ```
 
 ```
-extractor.py           # 核心引擎：大表构建/分类/AI 批处理/写结果
-cli.py                 # 入口（config 驱动）
-CONFIG.md              # 配置参考：big_table 多源/特殊规则/CLI 参数
-projects/<项目>/
-├── *.yaml             # 提取配置（路径相对 yaml 所在目录解析）
-├── prep_*.py          # 预处理：参考表+待填表 拍平 → data/
-├── merge_*.py         # 回填：filled 结果写回客户工作表
-├── source/            # 客户原件（工作表、文本 dump、项目配置表）
-├── data/              # prep 产物：参考大表 + 待填 target
-├── output/            # *_filled.xlsx 结果
-└── runtime/           # 进度 + AI 日志
+extractor.py           # core engine: big-table building, classification, AI batching, result writing
+cli.py                 # entry point (config-driven)
+CONFIG.md              # configuration reference: multi-source big_table, special rules, CLI parameters
+projects/<project>/
+├── *.yaml             # extraction config (paths resolved relative to the YAML file)
+├── prep_*.py          # preprocessing: flatten reference and target sheets into data/
+├── merge_*.py         # merge-back: write filled results back to the client workbook
+├── source/            # client source files (workbooks, text dumps, project config sheets)
+├── data/              # prep outputs: reference big table + target rows to fill
+├── output/            # *_filled.xlsx results
+└── runtime/           # progress + AI logs
 ```
 
 ```bash
-python3 cli.py projects/<项目>/<配置>.yaml --dry-run   # 免费看分类统计
-python3 cli.py projects/<项目>/<配置>.yaml             # 正式跑
+python3 cli.py projects/<project>/<config>.yaml --dry-run   # preview classification stats for free
+python3 cli.py projects/<project>/<config>.yaml             # run the full fill job
 ```
 
 ## Detailed Technical Notes
